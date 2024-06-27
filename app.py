@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from une import extract_text_from_word, parse_translations
 from une import find_information as find_info
 
 app = Flask(__name__)
+CORS(app, resources={"/find-information": {"origins": "https://unesco-theta.vercel.app"}})
 
 @app.route('/extract-text', methods=['POST'])
 def extract_text():
